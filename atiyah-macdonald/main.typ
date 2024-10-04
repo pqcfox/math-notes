@@ -215,4 +215,12 @@ We prove a cycle of implications.
 
 TODO: finish this! 
 
+=== Exercise 12
+
+Let $frak(m)$ be the maximal ideal of a local ring $A$. Note that any $x in.not frak(m)$ must be a unit, otherwise by Corollary 1.5 it would lie in a maximal ideal distinct from $frak(m)$. 
+
+We show that the only idempotent element of $frak(m)$ is $0$. Assume some $e in frak(m)$ satisfies $e^2 = e$. Then $1 - e in.not frak(m)$, otherwise we would have $1 - e + e = 1 in frak(m)$. Thus $1 - e$ is a unit. But $(1 - e)^2 = 1 - 2e + e^2 = 1 - e$, so then multiplying both sides by $(1 - e)^(-1)$, we get $1 - e = 1$, i.e. $e = 0.$
+
+The only idempotent $e in.not frak(m)$ is $1$, since $e in.not frak(m)$ implies $e$ is a unit, meaning $e^2 = e$ implies $e = 1$. Since either $e in frak(m)$ or $e in.not frak(m)$, our only options for an idempotent $e in A$ are $0$ and $1$. #h(1fr) $square.stroked$
+
 = Modules
