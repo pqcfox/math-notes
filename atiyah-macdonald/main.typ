@@ -1,5 +1,7 @@
 #import "@preview/fractusist:0.1.0": hilbert-curve
 
+#let done = [#h(1fr) $square.stroked$]
+
 #set par(justify: true)
 #set page(margin: 1.25in)
 #set text(font: "TeX Gyre Pagella", size: 10pt)
@@ -164,25 +166,43 @@ $subset.eq$: By definition, we have $frak(a) sect (frak(b) + frak(c)) subset.eq 
   $x = y + z in frak(a) + frak(a) sect frak(c) = frak(a) sect frak(b) + frak(a) sect frak(c)$. 
 ]
 
-$supset.eq$: Any element $x in frak(a) sect frak(b) + frak(a) sect frak(c)$ can be written as $x = y + z$ for $y in frak(a) sect frak(b)$ and $z$ in $frak(a) sect frak(c)$. Since $y, z in frak(a)$, $x = y + z in frak(a)$, and since $y in frak(b)$ and $z in frak(c)$, we have $x = y + z in frak(b) + frak(c)$ as well, meaning $x in frak(a) sect (frak(b) + frak(c))$ as desired.
+$supset.eq$: Any element $x in frak(a) sect frak(b) + frak(a) sect frak(c)$ can be written as $x = y + z$ for $y in frak(a) sect frak(b)$ and $z$ in $frak(a) sect frak(c)$. Since $y, z in frak(a)$, $x = y + z in frak(a)$, and since $y in frak(b)$ and $z in frak(c)$, we have $x = y + z in frak(b) + frak(c)$ as well, meaning $x in frak(a) sect (frak(b) + frak(c))$ as desired. #done
+
+== Ideals lying in the union of prime ideals (Proposition 1.11(i))
+
+The part of the proof beginning with "...then for each $i$ there exists $x_i in frak(a)$ such that $x_i in.not frak(p)_j$ whenever $j eq.not i$..." could use clarification. We paraphrase the argument below.
+
+If $n > 1$ and the result is true for $n - 1$, assume the premise $frak(a) subset.eq.not union.big_(i = 1)^n frak(p)_i space.punct (1 lt.eq i lt.eq n)$ and note that for each $1 lt.eq j lt.eq n$ we then have $frak(a) subset.eq.not frak(p)_i$ for $1 lt.eq i lt.eq n$, $i eq.not j$.
+
+Since our desired result holds for $n - 1$, this in turn implies $frak(a) subset.eq.not union.big_(1 lt.eq i lt.eq n; space.punct i eq.not j) frak(p)_i$ for each such $j$, meaning that for each $j$ we have some $x_j in.not frak(a)$ such that $x_j in.not frak(p)_k$ when $j eq.not k$.
+
+Now, if by chance we also have $x_j in.not frak(p)_j$ for some $j$, then $x_j in.not union.big_(i = 1)^n frak(p)_i$ meaning $frak(a) subset.eq.not union.big_(i = 1)^n frak(p)_i$, our desired result. Otherwise, i.e. if $x_j in frak(p)_j$ for every $j$, then we consider
+
+#align(center)[
+  $y = sum_(i=1)^n x_1 x_2 dots.h.c hat(space.thin x_i space.thin) dots.h.c x_n$
+]
+
+where the "hat" indicates the omission of $x_i$ from the product, i.e. each summand is missing one of ${x_1, x_2, dots.h.c x_n}$. For each $j$, we note that all summands but one will contain $x_j$ and thus lie in $frak(p)_j$. The remaining summand is a product of elements not in $frak(p)_j$ and thus by primality doesn't lie in $frak(p)_j$, meaning the whole sum doesn't lie in $frak(p)_j$. Since this argument applies for all $j$, we have $y in.not union.big_(i = 1)^n frak(p)_i$, meaning that $frak(a) subset.eq.not union.big_(i=1)^n frak(p)_i.$ #done
+
+== TODO: continue from Proposition 1.11(b).
 
 == End of chapter exercises
 
 === Exercise 1
 
-Take $n > 0$ such that $x^n = 0$. Then $(1 + x)(1 - x + x^2 - x^3 + ... plus.minus x^(n - 1)) = 1 plus.minus x^n = 1$. #h(1fr) $square.stroked$
+Take $n > 0$ such that $x^n = 0$. Then $(1 + x)(1 - x + x^2 - x^3 + dots.h.c plus.minus x^(n - 1)) = 1 plus.minus x^n = 1$. #done
 
 === Exercise 6
 
 By Proposition 1.9, it suffices to show that for any $x in A$, if $1 - x y$ is a unit for every $y in A$, then $x$ lies in the nilradical. Assume to a contraction that some such $x$ is not in the nilradical. By the premise of the problem, $(x)$ would then contain some non-zero idempotent $e$. Take $y$ such that $e = x y$. Then $1 - x y = 1 - e$, which is idempotent: $(1 - e)^2 = 1 - 2e + e^2 = 1 - e$. 
 
-If $1 - e$ was a unit, then multiplying both sides of the previous equality by its inverse would give $1 - e = 1$, i.e. $e = 0$, contradicting our choice of $e$. $arrow.r.double arrow.l.double$ #h(1fr) $square.stroked$ 
+If $1 - e$ was a unit, then multiplying both sides of the previous equality by its inverse would give $1 - e = 1$, i.e. $e = 0$, contradicting our choice of $e$. $arrow.r.double arrow.l.double$ #done
 
 === Exercise 7
 
 Fix an arbitrary prime ideal $frak(p) subset.eq A$, and take $x in A - frak(p)$ with image $overline(x) in A\/frak(p)$. Since $x^n = x$ for some $n > 1$, we have $(x^(n - 1) - 1)x = 0$. Passing to the quotient, this gives $(overline(x)^(n - 1) - 1) overline(x) = 0$. 
 
-Since $x in.not frak(p)$, we have $overline(x) eq.not 0$. Because $A\/frak(p)$ is an integral domain, this means $overline(x)^(n - 1) - 1 = 0$, implying that $overline(x)$ is a unit. As $x in A - frak(p)$ was arbitrary, this means that any nonzero element of $A\/frak(p)$ is a unit, i.e. $A\/frak(p)$ is a field and thus $frak(p)$ is maximal. #h(1fr) $square.stroked$
+Since $x in.not frak(p)$, we have $overline(x) eq.not 0$. Because $A\/frak(p)$ is an integral domain, this means $overline(x)^(n - 1) - 1 = 0$, implying that $overline(x)$ is a unit. As $x in A - frak(p)$ was arbitrary, this means that any nonzero element of $A\/frak(p)$ is a unit, i.e. $A\/frak(p)$ is a field and thus $frak(p)$ is maximal. #done
 
 === Exercise 8
 
@@ -194,7 +214,7 @@ We handle both directions separately:
 
 $=>$: If $frak(a) = r(frak(a))$, then any $x in A$ such that $x^n in frak(a)$ for some $n > 0$ must lie in $frak(a)$. Thus, for any $overline(x) in A\/frak(a)$ such that $overline(x)^n = 0$, we have $overline(x) = 0$, meaning in $A\/frak(a)$ that the nilradical is the zero ideal, i.e. $sect.big_(frak(p) in cal(F)) frak(p) = 0$ for a family of prime ideals $cal(F)$ in $A\/frak(a)$. Now, take $pi: A -> A\/frak(a)$ to be the natural projection of $A$ onto $A\/frak(a)$. Because taking preimages preserves intersections and sends prime ideals to prime ideals, we have that $pi^(-1) cal(F)$ is a family of prime ideals whose intersection is $pi^(-1)(0) = frak(a)$, i.e. $frak(a)$ is an intersection of prime ideals. 
 
-$arrow.l.double$: Let $frak(a)$ be the intersection of some family $cal(F)$ of prime ideals in $A$. If $x^n in frak(a)$ for some $n > 0$, then $x^n in frak(p)$ for each $frak(p) in cal(F)$. Since prime ideals are radical, this means that $x in frak(p)$ for each $frak(p) in cal(F)$, and thus $x in frak(a)$ as desired. #h(1fr) $square.stroked$
+$arrow.l.double$: Let $frak(a)$ be the intersection of some family $cal(F)$ of prime ideals in $A$. If $x^n in frak(a)$ for some $n > 0$, then $x^n in frak(p)$ for each $frak(p) in cal(F)$. Since prime ideals are radical, this means that $x in frak(p)$ for each $frak(p) in cal(F)$, and thus $x in frak(a)$ as desired. #done
 
 === Exercise 10
 
@@ -204,7 +224,7 @@ We prove a cycle of implications.
  
 (ii) $=>$ (iii): Since every non-nilpotent element of $A$ is a unit, we have that $frak(N)$ is maximal by Proposition 1.6(i) and thus $A\/frak(N)$ is a field.
 
-(iii) $=>$ (i): If $A\/frak(N)$ is a field, then $frak(N)$ is maximal. For any prime ideal $frak(p) subset.eq A$, we have $frak(N) subset.eq frak(p)$ as the nilpotent is the intersection of all prime ideals, but then by maximality of $frak(N)$ we must have $frak(N) = frak(p)$. Thus, there can only be one prime ideal in $A$. #h(1fr) $square.stroked$
+(iii) $=>$ (i): If $A\/frak(N)$ is a field, then $frak(N)$ is maximal. For any prime ideal $frak(p) subset.eq A$, we have $frak(N) subset.eq frak(p)$ as the nilpotent is the intersection of all prime ideals, but then by maximality of $frak(N)$ we must have $frak(N) = frak(p)$. Thus, there can only be one prime ideal in $A$. #done
 
 === Exercise 11
 
@@ -221,6 +241,6 @@ Let $frak(m)$ be the maximal ideal of a local ring $A$. Note that any $x in.not 
 
 We show that the only idempotent element of $frak(m)$ is $0$. Assume some $e in frak(m)$ satisfies $e^2 = e$. Then $1 - e in.not frak(m)$, otherwise we would have $1 - e + e = 1 in frak(m)$. Thus $1 - e$ is a unit. But $(1 - e)^2 = 1 - 2e + e^2 = 1 - e$, so then multiplying both sides by $(1 - e)^(-1)$, we get $1 - e = 1$, i.e. $e = 0.$
 
-The only idempotent $e in.not frak(m)$ is $1$, since $e in.not frak(m)$ implies $e$ is a unit, meaning $e^2 = e$ implies $e = 1$. Since either $e in frak(m)$ or $e in.not frak(m)$, our only options for an idempotent $e in A$ are $0$ and $1$. #h(1fr) $square.stroked$
+The only idempotent $e in.not frak(m)$ is $1$, since $e in.not frak(m)$ implies $e$ is a unit, meaning $e^2 = e$ implies $e = 1$. Since either $e in frak(m)$ or $e in.not frak(m)$, our only options for an idempotent $e in A$ are $0$ and $1$. #done
 
 = Modules
