@@ -184,7 +184,65 @@ Now, if by chance we also have $x_j in.not frak(p)_j$ for some $j$, then $x_j in
 
 where the "hat" indicates the omission of $x_i$ from the product, i.e. each summand is missing one of ${x_1, x_2, dots.h.c x_n}$. For each $j$, we note that all summands but one will contain $x_j$ and thus lie in $frak(p)_j$. The remaining summand is a product of elements not in $frak(p)_j$ and thus by primality doesn't lie in $frak(p)_j$, meaning the whole sum doesn't lie in $frak(p)_j$. Since this argument applies for all $j$, we have $y in.not union.big_(i = 1)^n frak(p)_i$, meaning that $frak(a) subset.eq.not union.big_(i=1)^n frak(p)_i.$ #done
 
-== TODO: continue from Proposition 1.11(b).
+== Ideals whose intersection lies in a prime ideal (Proposition 1.11(ii))
+
+This part of the proof contains a typo: the part which says
+
+#quote[
+  Suppose $frak(p) subset.eq.not frak(a)_i$ for all $i$...
+]
+
+should actually begin "Suppose $frak(p) supset.eq.not frak(a)_i$ for all $i$," assuming the desired conclusion is false to show a contradiction. The proof can be summarized as
+
+#quote[
+  If each ideal $frak(a)_i$ has an element not in $frak(p)$, then the product of those elements is in all $frak(a)_i$ but not in $frak(p)$ (by primality).
+]
+
+The equality case boils down to $frak(p) = sect frak(a)_i => frak(p) subset.eq frak(a)_i "for every" i$, and since $frak(p) supset.eq frak(a)_i "for some" i$, we have that $frak(p)$ must equal that particular $frak(a)_i$. 
+
+== Ideal quotients in $ZZ$ (Example, page 8)
+
+TODO: write out why this works.
+
+== Various statements about ideal quotients (Exercise 1.12)
+
+#set enum(numbering: "(i)")
+
+The proofs for the provided statements are as follows:
+
++ For each $x in frak(a)$, we have by the definition of an ideal that $x frak(b) subset.eq frak(a)$, i.e. $x in (frak(a) : frak(b))$.
++ If $x in (frak(a) : frak(b))$, then $x frak(b) subset.eq frak(a)$, meaning $(frak(a) : frak(b)) frak(b) subset.eq frak(a)$.
++ For $x in A$ to be in $((frak(a) : frak(b)) : frak(c))$, that means that $x frak(c) subset.eq (frak(a) : frak(b))$, i.e. for any $y in x frak(c)$, $y frak(b) subset.eq frak(a)$. This in turn is the same as saying $(x frak(c)) frak(b) subset.eq frak(a)$. Since $(x frak(c)) frak(b) = x (frak(b) frak(c))$, that in turn is equivalent to the statement $x in (frak(a) : frak(b) frak(c))$. Thus, $((frak(a) : frak(b)) : frak(c)) = (frak(a) : frak(b) frak(c))$. Reversing the roles of $frak(b)$ and $frak(c)$, the remaining equality follows.
++ For any $x in A$, $x in (sect_i frak(a)_i : frak(b))$ is the same as saying $x frak(b) in frak(a)_i "for all" i$. This in turn is equivalent to $x in (frak(a)_i : frak(b)) "for all" i$, i.e. $x in sect_i (frak(a)_i : frak(b))$.
++ If $x in (frak(a) : sum_i frak(b)_i)$, then $x sum_i frak(b)_i subset.eq frak(a)$, meaning $x frak(b)_i subset.eq frak(a) "for each" i$, i.e. $sect_i (frak(a) : frak(b)_i)$. In the reverse direction, if $x frak(b)_i subset.eq frak(a) "for each" i$, then $x sum_i frak(b)_i subset.eq frak(a)$, i.e. $(frak(a) : sum_i frak(b)_i)$. #done 
+
+== $r(frak(a))$ is an ideal (page 8)
+
+On page 8 just after the definition of the radical of an ideal, the following claim is made:
+
+#quote[
+  If $phi.alt: A -> A\/frak(a)$ is the standard homomorphism, then $r(frak(a)) = phi.alt^(-1)(frak(N)_(A\/frak(a)))$ and hence $r(frak(a))$ is an ideal by (1.7). 
+ ]
+
+TODO: elaborate on this.
+
+== Various statements about radicals of ideals (Exercise 1.13)
+
+#set enum(numbering: "(i)")
+
+The proofs for the provided statements are as follows:
+
++ If $x in frak(a)$, then in particular $x^1 in frak(a)$, so $x in r(frak(a))$.
++ From the previous statement, $r(r(frak(a)) supset.eq r(frak(a))$. We show the reverse inclusion: if $x in r(r(frak(a))$, then there exist $m, n > 0$ such that $(x^m)^n in frak(a)$. But then $x^(m n) in frak(a)$ with $m n > 0$, so $x in r(frak(a))$.
++ We show a cycle of inclusions:
+  + $r(frak(a) frak(b)) subset.eq r(frak(a) sect frak(b))$: If $x$ in $r(frak(a) frak(b))$, then $x^n in frak(a) frak(b)$ for some $n > 0$. Since $frak(a) frak(b) subset.eq frak(a)$ and $frak(a) frak(b) subset.eq frak(b)$, this means $x^n in frak(a) sect frak(b)$. 
+  + $r(frak(a) sect frak(b)) subset.eq r(frak(a)) sect r(frak(b))$: If $x$ in $r(frak(a) sect frak(b))$, then $x^n in frak(a) sect frak(b)$ for some $n > 0$. Since $frak(a) sect frak(b) subset.eq frak(a)$ and $frak(a) sect frak(b) subset.eq frak(b)$, we have $x in r(frak(a)) sect r(frak(b)).$ 
+  + $r(frak(a)) sect r(frak(b)) subset.eq r(frak(a) frak(b))$: If $x in r(frak(a)) sect r(frak(b))$, then we have that for some $m, n > 0$ that $x^m in frak(a)$ and $x^n in frak(b)$. This means that $x^(m + n) in frak(a) frak(b)$, and since $m + n > 0$, we have $x in r(frak(a) frak(b)).$
++ We handle this in two directions:
+  + $=>$: If $r(frak(a)) = (1)$, then in particular $1 in r(frak(a))$, i.e. $1^n in frak(a)$ for some $n > 0$. Since $1^n = 1$ for any such $n$, we have $1 in frak(a)$, i.e. $frak(a) = (1)$. 
+  + $arrow.l.double$: If $frak(a) = (1)$, then since $r(frak(a)) supset.eq frak(a)$, we must have $r(frak(a)) = (1)$.
++ TODO 
++ TODO
 
 == End of chapter exercises
 
